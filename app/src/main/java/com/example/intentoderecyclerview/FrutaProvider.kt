@@ -2,7 +2,7 @@ package com.example.intentoderecyclerview
 
  class FrutaProvider {
     companion object{
-        val listaFrutas= listOf(
+        val listaFrutas= mutableListOf(
             Fruta("Fresas","La fresa de Huelva, la mejor del mundo",R.drawable.fresa),
             Fruta("Manzanas","Manzanas golden, pink lady...", R.drawable.manzana),
             Fruta("Peras","Peras blanquilla, conferencia, limonera...",R.drawable.pera),
