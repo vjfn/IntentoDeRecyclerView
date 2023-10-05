@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.example.intentoderecyclerview.FrutaProvider.Companion.listaFrutas
 import com.example.intentoderecyclerview.databinding.ActivityMainBinding
 
@@ -16,15 +17,19 @@ import com.example.intentoderecyclerview.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var adapter: FrutaAdapter
+    private lateinit var layoutManager:LayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding=ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.rvFrutas.layoutManager=LinearLayoutManager(this)
-        binding.rvFrutas.adapter=FrutaAdapter(FrutaProvider.listaFrutas){fruta ->
+        layoutManager=LinearLayoutManager(this)
+        binding.rvFrutas.layoutManager=layoutManager
+        adapter=FrutaAdapter(FrutaProvider.listaFrutas){fruta ->
             onItemSelected(fruta)
         }
+        binding.rvFrutas.adapter=adapter
         binding.rvFrutas.setHasFixedSize(true)
         binding.rvFrutas.itemAnimator=DefaultItemAnimator()
         val decoration=DividerItemDecoration(this,RecyclerView.VERTICAL)
